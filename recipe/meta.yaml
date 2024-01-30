@@ -10,20 +10,20 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  noarch: python
+  skip: True  # [py<38]
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
   host:
-    - python >=3.7
+    - python
     - pip
     - hatchling
     - hatch-vcs
     - hatch-fancy-pypi-readme
 
   run:
-    - python >=3.7
+    - python
 
 test:
   imports:
