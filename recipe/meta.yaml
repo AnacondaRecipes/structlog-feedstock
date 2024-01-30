@@ -46,12 +46,19 @@ test:
     - pytest -v tests --asyncio-mode=auto
 
 about:
-  home: http://www.structlog.org
+  home: https://www.structlog.org
   license: Apache-2.0 OR MIT
   summary: Structured Logging for Python
+  description: |
+    structlog is the production-ready logging solution for Python:
+    - Simple: Everything is about functions that take and return dictionaries - all hidden behind familiar APIs.
+    - Powerful: Functions and dictionaries aren't just simple but also powerful. structlog leaves you in control.
+    - Fast: structlog is not hamstrung by designs of yore. Its flexibility comes not at the price of performance.
   license_file:
     - LICENSE-MIT
     - LICENSE-APACHE
+  dev_url: https://github.com/hynek/structlog
+  doc_url: https://www.structlog.org
 
 extra:
   recipe-maintainers:
