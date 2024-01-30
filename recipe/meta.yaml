@@ -6,8 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  fn: structlog-{{ version }}.tar.gz
-  url: https://github.com/hynek/structlog/archive/{{ version }}.zip
+  url: https://github.com/hynek/structlog/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
