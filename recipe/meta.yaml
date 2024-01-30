@@ -30,8 +30,20 @@ requirements:
     - python
 
 test:
+  requires:
+    - pip
+    - pytest
+    - pytest-asyncio >=0.17
+    - freezegun >=0.2.8
+    - pretend
+    - simplejson
+  source_files:
+    - tests
   imports:
     - structlog
+  commands:
+    - pip check
+    - pytest -v tests --asyncio-mode=auto
 
 about:
   home: http://www.structlog.org
