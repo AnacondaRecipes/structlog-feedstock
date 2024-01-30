@@ -1,0 +1,66 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 6bb583a..389332d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,7 +1,7 @@
+ # SPDX-License-Identifier: MIT OR Apache-2.0
+ 
+ [build-system]
+-requires = ["hatchling", "hatch-vcs", "hatch-fancy-pypi-readme>=22.8.0"]
++requires = ["hatchling", "hatch-vcs"]
+ build-backend = "hatchling.build"
+ 
+ 
+@@ -183,52 +183,3 @@ ignore_errors = true
+ [[tool.mypy.overrides]]
+ module = "tests.typing.*"
+ ignore_errors = false
+-
+-
+-[tool.hatch.metadata.hooks.fancy-pypi-readme]
+-content-type = "text/markdown"
+-
+-[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+-text = '''<p align="center">
+-    <img
+-        src="https://www.structlog.org/en/stable/_static/structlog_logo_small.png"
+-        alt="structlog mascot"
+-    />
+-</p>
+-'''
+-
+-[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+-path = "README.md"
+-start-after = "<!-- begin-short -->\n"
+-end-before = "\n<!-- end-short -->"
+-
+-[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+-path = "README.md"
+-start-after = "<!-- begin-meta -->\n"
+-
+-[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+-text = """
+-
+-
+-## Release Information
+-
+-"""
+-
+-[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+-path = "CHANGELOG.md"
+-start-after = "<!-- changelog follows -->"
+-pattern = "\n(###.+?\n)## "
+-
+-[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+-text = """
+----
+-
+-[Full Changelog →](https://www.structlog.org/en/stable/changelog.html)
+-
+-
+-"""
+-
+-[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+-path = "README.md"
+-start-at = "## Credits"
+-end-before = "<!-- begin-meta -->"
