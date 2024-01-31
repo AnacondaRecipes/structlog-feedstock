@@ -1,5 +1,5 @@
-{% set version = "24.1.0" %}
-{% set sha256 = "6f7df21c3457577491c4dd2f96515d0aa861056efa059d7829dd7a172ea47965" %}
+{% set version = "19.2.0" %}
+{% set sha256 = "736acf9cd273ad7ac6b34a9e2e8e0648eed7c34488d979683d192654fd50b2c2" %}
 
 package:
   name: structlog
@@ -8,11 +8,9 @@ package:
 source:
   url: https://github.com/hynek/structlog/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - remove-fancy-pypi-readme.patch
 
 build:
-  skip: True  # [py<38]
+  skip: True  # [py<37]
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir --no-build-isolation -v
 
@@ -37,13 +35,16 @@ test:
     - freezegun >=0.2.8
     - pretend
     - simplejson
+    - rapidjson
+    - twisted
+    - six
   source_files:
     - tests
   imports:
     - structlog
   commands:
     - pip check
-    - pytest -v tests --asyncio-mode=auto
+    - pytest -v tests  #--ignore=tests/test_processors.py -k "not TestRenderToLogKW.test_add_extra_event_dict"
 
 about:
   home: https://www.structlog.org
@@ -56,7 +57,7 @@ about:
     - Powerful: Functions and dictionaries aren't just simple but also powerful. structlog leaves you in control.
     - Fast: structlog is not hamstrung by designs of yore. Its flexibility comes not at the price of performance.
   license_file:
-    - LICENSE-MIT
+    - LICENSE.mit
   dev_url: https://github.com/hynek/structlog
   doc_url: https://www.structlog.org
 
