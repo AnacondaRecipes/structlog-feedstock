@@ -32,7 +32,7 @@ test:
     - freezegun >=0.2.8
     - pretend
     - twisted
-    - python-rapidjson  # [py>=36]
+    - python-rapidjson  # [not s390x]
   source_files:
     - tests
     - conftest.py
