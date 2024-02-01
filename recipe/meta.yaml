@@ -19,6 +19,7 @@ requirements:
     - python
     - pip
     - setuptools
+    - wheel
   run:
     - python
     - six
@@ -29,7 +30,6 @@ test:
     - pytest
     - freezegun >=0.2.8
     - pretend
-    - twisted
     - python-rapidjson  # [not s390x]
   source_files:
     - tests
@@ -38,7 +38,7 @@ test:
     - structlog
   commands:
     - pip check
-    - pytest -v tests -k "not test_delattr_missing"
+    - pytest -v tests --ignore=tests/test_twisted.py -k "not test_delattr_missing"
 
 about:
   home: https://www.structlog.org
