@@ -32,7 +32,6 @@ test:
     - freezegun >=0.2.8
     - pretend
     - simplejson
-    - rapidjson
     - twisted
     - six
   source_files:
