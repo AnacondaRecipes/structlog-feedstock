@@ -23,6 +23,7 @@ requirements:
 
   run:
     - python
+    - six
 
 test:
   requires:
@@ -42,8 +43,8 @@ test:
 
 about:
   home: https://www.structlog.org
-  license: MIT
-  license_family: MIT
+  license: Apache-2.0 OR MIT
+  license_family: OTHER
   summary: Structured Logging for Python
   description: |
     structlog is the production-ready logging solution for Python:
@@ -52,6 +53,8 @@ about:
     - Fast: structlog is not hamstrung by designs of yore. Its flexibility comes not at the price of performance.
   license_file:
     - LICENSE.mit
+    - LICENSE.apache2
+    - LICENSE
   dev_url: https://github.com/hynek/structlog
   doc_url: https://www.structlog.org
 
