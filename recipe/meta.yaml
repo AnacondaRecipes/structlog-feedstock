@@ -33,12 +33,12 @@ test:
     - twisted
   source_files:
     - tests
+    - conftest.py
   imports:
     - structlog
   commands:
     - pip check
-    # Tests failing because event_dict and sio fixtures are undefined.
-    - pytest -v tests  --ignore=tests/test_processors.py -k "not (test_delattr_missing or test_add_extra_event_dict)"
+    - pytest -v tests -k "not test_delattr_missing"
 
 about:
   home: https://www.structlog.org
