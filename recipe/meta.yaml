@@ -18,9 +18,7 @@ requirements:
   host:
     - python
     - pip
-    - hatchling
-    - hatch-vcs
-
+    - setuptools
   run:
     - python
     - six
