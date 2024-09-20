@@ -10,7 +10,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: True  # [py<37]
+  skip: True  # [py<38]
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir --no-build-isolation -v
 
@@ -19,20 +19,19 @@ requirements:
     - python
     - pip
     - hatchling
-    - hatch-fancy-pypi-readme
+    - hatch-fancy-pypi-readme >=22.8.0
     - hatch-vcs
   run:
     - python
-    - six
 
 test:
   requires:
     - pip
-    - pytest
+    - pytest >=6.0
     - freezegun >=0.2.8
     - pretend
     - python-rapidjson  # [not s390x]
-    - pytest-asyncio
+    - pytest-asyncio >=0.17
   source_files:
     - tests
   imports:
