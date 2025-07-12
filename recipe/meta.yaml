@@ -42,7 +42,6 @@ test:
     - pip check
     # check that pip gets the correct version 
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    # - pytest -v tests --asyncio-mode=auto --ignore=tests/test_twisted.py -k "not test_delattr_missing"
     # Skip: test_foreign_pre_chain_filter_by_level
     # In Python 3.13, there was a change (later reverted) that disabled logging during message processing
     # to prevent recursion. The structlog library's filter_by_level processor was updated to handle this by
@@ -50,7 +49,7 @@ test:
     # The test test_foreign_pre_chain_filter_by_level is failing because the current structlog version (24.4.0)
     # has the workaround for the Python 3.13 change, but the test environment might have a logger that's being
     # treated as disabled during the test.
-    # TODO: check for the next verison of structlog
+    # TODO: check for the next version of structlog
     - pytest -v tests  # [py!=313]
     - pytest -v tests -k "not test_foreign_pre_chain_filter_by_level"  # [py==313]
 
