@@ -1,6 +1,6 @@
 {% set name = "structlog" %}
-{% set version = "24.4.0" %}
-{% set sha256 = "d85aa814a735cf7d7c4a36ea3052d35ca7b2c631251f20950b1c17eacf1f4651" %}
+{% set version = "25.4.0" %}
+{% set sha256 = "45833c9b50a947e936dff0b0065919e292a38beef2461a218048d120e507789c" %}
 
 package:
   name: {{ name }}
@@ -24,6 +24,7 @@ requirements:
     - hatch-vcs
   run:
     - python
+    - typing-extensions
 
 test:
   requires:
