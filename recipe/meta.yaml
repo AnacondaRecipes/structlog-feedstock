@@ -23,7 +23,7 @@ requirements:
     - hatch-vcs
   run:
     - python
-    - typing-extensions
+    - typing-extensions  # [py<311]
 
 test:
   requires:
