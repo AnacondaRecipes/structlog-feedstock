@@ -1,6 +1,5 @@
 {% set name = "structlog" %}
-{% set version = "24.4.0" %}
-{% set sha256 = "d85aa814a735cf7d7c4a36ea3052d35ca7b2c631251f20950b1c17eacf1f4651" %}
+{% set version = "25.4.0" %}
 
 package:
   name: {{ name }}
@@ -8,11 +7,11 @@ package:
 
 source:
   url: https://github.com/hynek/structlog/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 45833c9b50a947e936dff0b0065919e292a38beef2461a218048d120e507789c
 
 build:
   skip: True  # [py<38]
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir --no-build-isolation -v
 
 requirements:
@@ -24,6 +23,7 @@ requirements:
     - hatch-vcs
   run:
     - python
+    - typing-extensions  # [py<311]
 
 test:
   requires:
@@ -31,7 +31,7 @@ test:
     - pytest >=6.0
     - freezegun >=0.2.8
     - pretend
-    - python-rapidjson  # [not s390x]
+    - python-rapidjson
     - pytest-asyncio >=0.17
   source_files:
     - tests
@@ -42,16 +42,7 @@ test:
     - pip check
     # check that pip gets the correct version 
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    # Skip: test_foreign_pre_chain_filter_by_level
-    # In Python 3.13, there was a change (later reverted) that disabled logging during message processing
-    # to prevent recursion. The structlog library's filter_by_level processor was updated to handle this by
-    # checking not logger.disabled in addition to the level check.
-    # The test test_foreign_pre_chain_filter_by_level is failing because the current structlog version (24.4.0)
-    # has the workaround for the Python 3.13 change, but the test environment might have a logger that's being
-    # treated as disabled during the test.
-    # TODO: check for the next version of structlog
-    - pytest -v tests  # [py!=313]
-    - pytest -v tests -k "not test_foreign_pre_chain_filter_by_level"  # [py==313]
+    - pytest -v tests
 
 about:
   home: https://www.structlog.org
