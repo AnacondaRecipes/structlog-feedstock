@@ -6,12 +6,12 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/hynek/structlog/archive/{{ version }}.tar.gz
+  url: https://github.com/hynek/structlog/archive/refs/tags/{{ version }}.tar.gz
   sha256: ca447e91f03a18b3ae1f1917342c023091e923418409e19cfe67b90dbdce2694
 
 build:
-  skip: true  # [py<38]
   number: 0
+  skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir --no-build-isolation -v
 
 requirements:
