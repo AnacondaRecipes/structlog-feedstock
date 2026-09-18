@@ -24,12 +24,12 @@ requirements:
   run:
     - python
     - typing-extensions  # [py<311]
-    - typing_extensions  # [py<311]
 
 test:
   requires:
     - pip
     - pytest >=6.0
+    - pytest-randomly
     - simplejson
     - pytest-asyncio >=0.17
     - time-machine>=2.14.1
@@ -42,7 +42,7 @@ test:
     - pip check
     # check that pip gets the correct version
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    - pytest -v tests
+    - pytest -vv tests
 
 about:
   home: https://www.structlog.org
