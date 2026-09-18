@@ -1,5 +1,5 @@
 {% set name = "structlog" %}
-{% set version = "25.5.0" %}
+{% set version = "26.1.0" %}
 
 package:
   name: {{ name }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/hynek/structlog/archive/refs/tags/{{ version }}.tar.gz
-  sha256: ca447e91f03a18b3ae1f1917342c023091e923418409e19cfe67b90dbdce2694
+  sha256: a32b711804f80404b1c6de47556df2215c399acec2d38199e91ceb4a2ca1fd51
 
 build:
   number: 0
-  skip: true  # [py<38]
+  skip: true  # [py<310]
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir --no-build-isolation -v
 
 requirements:
@@ -29,6 +29,7 @@ test:
   requires:
     - pip
     - pytest >=6.0
+    - pytest-randomly
     - simplejson
     - pytest-asyncio >=0.17
     - time-machine>=2.14.1
@@ -41,7 +42,7 @@ test:
     - pip check
     # check that pip gets the correct version
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    - pytest -v tests
+    - pytest -vv tests
 
 about:
   home: https://www.structlog.org
